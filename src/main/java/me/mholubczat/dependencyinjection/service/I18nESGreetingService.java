@@ -1,9 +1,11 @@
 package me.mholubczat.dependencyinjection.service;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-@Service()
-public class I18nSPGreetingService implements GreetingService{
+@Profile({"ES","default"})
+@Service("i18nService")
+public class I18nESGreetingService implements GreetingService{
     @Override
     public String sayGreeting() {
         return "Hola Mundo - ES";
