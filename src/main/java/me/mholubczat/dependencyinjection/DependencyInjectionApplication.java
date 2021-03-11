@@ -4,7 +4,9 @@ import me.mholubczat.dependencyinjection.controller.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+//@ComponentScan(basePackages = {"me.mholubczat.dependencyinjection"})//teraz to nic nie daje ta annotacja - ta paczka i tak na default jest skanowana ALE można tu dodać inne paczki
 @SpringBootApplication
 public class DependencyInjectionApplication {
 
