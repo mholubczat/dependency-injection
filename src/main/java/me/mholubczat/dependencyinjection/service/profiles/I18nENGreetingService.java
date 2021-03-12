@@ -1,11 +1,17 @@
 package me.mholubczat.dependencyinjection.service.profiles;
 
+import me.mholubczat.dependencyinjection.repositories.EnglishGreetingRepository;
 import me.mholubczat.dependencyinjection.service.GreetingService;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
 
 
 public class I18nENGreetingService implements GreetingService {
+
+
+    private final EnglishGreetingRepository englishGreetingRepository;
+
+    public I18nENGreetingService(EnglishGreetingRepository englishGreetingRepository) {
+        this.englishGreetingRepository = englishGreetingRepository;
+    }
 
     @Override
     public String sayGreeting() {

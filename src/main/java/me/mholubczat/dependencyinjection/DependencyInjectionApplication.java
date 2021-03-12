@@ -6,13 +6,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-//@ComponentScan(basePackages = {"me.mholubczat.dependencyinjection"})//teraz to nic nie daje ta annotacja - ta paczka i tak na default jest skanowana ALE można tu dodać inne paczki
+@ComponentScan(basePackages = {"me.mholubczat.dependencyinjection", "me.mholubczat.pets"})
 @SpringBootApplication
 public class DependencyInjectionApplication {
 
 	public static void main(String[] args) {
 
 		ApplicationContext ctx =  SpringApplication.run(DependencyInjectionApplication.class, args);
+
+		PetController petController = ctx.getBean("petController", PetController.class);
+		System.out.println("----------BestPetIs--------");
+		System.out.println(petController.whichPetIsTheBest());
 
 		MyController myController =(MyController) ctx.getBean("myController");
 
