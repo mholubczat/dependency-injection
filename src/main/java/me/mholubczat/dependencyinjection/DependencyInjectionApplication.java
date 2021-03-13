@@ -1,12 +1,13 @@
 package me.mholubczat.dependencyinjection;
 
 import me.mholubczat.dependencyinjection.controller.*;
+import me.mholubczat.dependencyinjection.service.PrototypeBean;
+import me.mholubczat.dependencyinjection.service.SingletonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = {"me.mholubczat.dependencyinjection", "me.mholubczat.pets"})
+//@ComponentScan(basePackages = {"me.mholubczat.dependencyinjection", "me.mholubczat.pets"})
 @SpringBootApplication
 public class DependencyInjectionApplication {
 
@@ -47,6 +48,18 @@ public class DependencyInjectionApplication {
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 
 		System.out.println(constructorInjectedController.getGreeting());
+
+		System.out.println("------------Bean scopes------------");
+
+		SingletonBean singletonBean1 = ctx.getBean(SingletonBean.class);
+		System.out.println(singletonBean1.getMyScope());
+		PrototypeBean prototypeBean1 = ctx.getBean(PrototypeBean.class);
+		System.out.println(prototypeBean1.getMyScope());
+		SingletonBean singletonBean2 = ctx.getBean(SingletonBean.class);
+		System.out.println(singletonBean2.getMyScope());
+		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
+		System.out.println(prototypeBean2.getMyScope());
+
 	}
 
 }
