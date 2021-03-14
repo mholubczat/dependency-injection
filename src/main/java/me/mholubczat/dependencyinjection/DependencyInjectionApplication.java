@@ -1,6 +1,7 @@
 package me.mholubczat.dependencyinjection;
 
 import me.mholubczat.dependencyinjection.controller.*;
+import me.mholubczat.dependencyinjection.datasource.FakeDataSource;
 import me.mholubczat.dependencyinjection.service.PrototypeBean;
 import me.mholubczat.dependencyinjection.service.SingletonBean;
 import org.springframework.boot.SpringApplication;
@@ -59,6 +60,11 @@ public class DependencyInjectionApplication {
 		System.out.println(singletonBean2.getMyScope());
 		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean2.getMyScope());
+
+		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource.getUsername());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getJdbcurl());
 
 	}
 
